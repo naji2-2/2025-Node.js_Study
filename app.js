@@ -7,8 +7,17 @@ const app = express();
 app.use(express.json());
 
 // 라우팅 설정 루트 경로에 대한 요청 처리
-app.post('/happy', (req, res) => {
-  res.send(req.body);
+app.get('/happy', (req, res)=>{
+  res.status(200).send('Get happy');
+});
+
+app.post('/happy', (req, res)=>{
+  res.status(200).send('Post happy');
+});
+
+app.get('/happy/:person', (req, res) => {
+  const person = req.params.person;
+  res.status(200).send(person);
 });
 
 // 서버를 3000번 포트에서 실행
