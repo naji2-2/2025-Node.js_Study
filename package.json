@@ -1,7 +1,6 @@
 {
   "name": "2025node",
   "version": "1.0.0",
-  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +16,7 @@
   "homepage": "https://github.com/naji2-2/2025-Node.js_Study#readme",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2"
   }
 }
