@@ -16,6 +16,7 @@
   "homepage": "https://github.com/naji2-2/2025-Node.js_Study#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mysql2": "^3.14.0"
