@@ -31,18 +31,32 @@ app.get('/', (req, res) => {
 });
 
 app.get('/travel', (req, res) => {
-    const _query = 'SELECT id, name FROM travellist'
-    db.query(_query, (err, results)=>{
-        if(err) {
-            console.error('데이터베이스 쿼리 실패 : ', err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
+    const query = 'SELECT id, name FROM travellist'
+    db.query(query, (err, results)=>{
         const travelList = results;
         res.render('travel', {travelList});
     });
 });
 
+app.get('/travel/:id', (req, res) => {
+    const travelId = req.params.id;
+    const query = 'SELECT * FROM travellist WHERE id = ?';
+    db.query(query, [travelId], (err, results) => {
+        if(err) {
+            console.error('데이터베이스 쿼리 실패 : ', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        if(results.length === 0){
+            res.status(404).send('여행지를 찾을 수 없습니다.');
+            return;
+        }
+        const travel = results[0];
+        res.render('travelDetail', {travel});
+    });
+});
+
+// 따로 경로를 지정하지 않음(모든 경로에 대해서 처리)
 app.use((req, res) => {
     
 });

@@ -7,9 +7,9 @@
 <body>
     <h1>여행지 목록</h1>
     <ul>
-        <% travelList.forEach(travel=> {%>
+        <% travelList.forEach(travel => {%>
             <li>
-                <%= travel.name %>
+                <a href="/travel/<%=travel.id%>"><%= travel.name %></a>
             </li>
         <% }) %>
 
