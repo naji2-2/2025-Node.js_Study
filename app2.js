@@ -72,6 +72,10 @@ app.post('/travel', (req, res) => {
     });
 });
 
+app.get('/add-travel', (req, res) => {
+    res.render('addTravel');
+})
+
 // 따로 경로를 지정하지 않음(모든 경로에 대해서 처리)
 app.use((req, res) => {
     
