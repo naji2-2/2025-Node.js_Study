@@ -6,6 +6,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+app.use(express.json());
+ app.use(express.urlencoded({extended: true}));
+
 app.set('view engine', 'ejs');
 // __dirname : 현재 디렉토리의 절대경로
 // path.join : 경로 지정자(\ or /)를 운영체제에 맞추어 줌
@@ -53,6 +56,19 @@ app.get('/travel/:id', (req, res) => {
         }
         const travel = results[0];
         res.render('travelDetail', {travel});
+    });
+});
+
+app.post('/travel', (req, res) => {
+    const { name } = req.body;
+    const _query = 'INSERT INTO travellist (name) VALUE (?)';
+    db.query(_query, [name], (err, result) => {
+        if(err) {
+            console.error('데이터베이스 퀴리 실패 : ', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        res.redirect('/travel');
     });
 });
 
