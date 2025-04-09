@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 dotenv.config();
 const app = express();
 
-app.use(methodOverride('_methoid'));
+app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -107,6 +107,19 @@ app.get('/travel/:id/edit', (req, res) => {
         }
         const travel = results[0];
         res.render('editTravel', {travel});
+    });
+});
+
+app.delete('/travel/:id', (req, res) => {
+    const travelId = req.params.id;
+    const _query = 'DELETE FROM travellist WHERE id=?';
+    db.query(_query, [travelId], (err, results) => {
+        if(err) {
+            console.error('DB 쿼리 실패 : ', err);
+            res.status(500).send('DB 서버 에러');
+            return;
+        }
+        res.render('deleteSuccess');
     });
 });
 
