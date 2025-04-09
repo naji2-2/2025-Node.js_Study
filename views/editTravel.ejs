@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>여행지 수정</title>
+</head>
+<body>
+    <h1>여행지 수정</h1>
+    <form action="/travel/<%=travel.id%>? method=PUT" method="POST">
+        <label for="name">여행지 이름 : </label>
+        <input type="text" id="name" name="name" value="<%=travel.name%>" required>
+        <button type="submit">수정</button>
+    </form>
+</body>
+</html>
