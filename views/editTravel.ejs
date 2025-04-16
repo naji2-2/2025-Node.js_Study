@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>여행지 수정</h1>
-    <form action="/travel/<%=travel.id%>? method=PUT" method="POST">
+    <form action="/travel/<%=travel.id%>?_method=PUT" method="POST">
         <label for="name">여행지 이름 : </label>
         <input type="text" id="name" name="name" value="<%=travel.name%>" required>
         <button type="submit">수정</button>
